@@ -2,7 +2,15 @@
     width: 800px;
     height: 500px;
 }
+.imagenC{
+    width: 200;
+    height: 180px;
+    
+}
 .fondo{
     background-color: rgba(0, 0, 0, 0.808);
+    text-align:center;
+}
+.centrar{
     text-align:center;
 }
