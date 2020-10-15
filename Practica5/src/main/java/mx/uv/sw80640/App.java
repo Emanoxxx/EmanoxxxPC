@@ -29,6 +29,15 @@ public class App
         get("/", (req, res) -> "Hola desde Spark");//Primero es un path, 
         //y despues una expresion landa(funcion anonima con una peticion 
         //y una respuesta)
-        get("/HOLA", (req, res) -> "JIJI desde Spark");
-    }
-}
+        get("/si",(request,response)->{
+            String psw= ""+request.queryParams("pass");
+            String eml= ""+request.queryParams("email");
+            return "Hola "+eml+" tu pass es: "+psw+"\n";
+        });
+        post("/adios",(request,response)->{
+            String psw= ""+request.queryParams("pass");
+            String eml= ""+request.queryParams("email");
+            
+            return "Hola "+eml+" tu pass es: "+psw+"\n"+request.contextPath();
+        });
+}}
