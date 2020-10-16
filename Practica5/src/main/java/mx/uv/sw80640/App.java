@@ -1,5 +1,9 @@
 package mx.uv.sw80640;
 import static spark.Spark.*;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 /**
  * Hello world!
  *
@@ -10,7 +14,7 @@ public class App
     {   
         port(2021);
         options("/*", (request, response) -> {
-
+            
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
             if (accessControlRequestHeaders != null) {
                 response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
@@ -34,10 +38,19 @@ public class App
             String eml= ""+request.queryParams("email");
             return "Hola "+eml+" tu pass es: "+psw+"\n";
         });
-        post("/adios",(request,response)->{
-            String psw= ""+request.queryParams("pass");
-            String eml= ""+request.queryParams("email");
+        post("/adiosJson",(request,response)-> {
+            try{
+             JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion =arbol.getAsJsonObject();
+            String psw= ""+peticion.get("pass");
+           String eml= ""+peticion.get("email");
+           return "Hola "+eml+" tu pass es: "+psw+"\n";
+            }catch(Exception e){
+                return "error jeje";
+            }
+           
             
-            return "Hola "+eml+" tu pass es: "+psw+"\n"+request.contextPath();
+            
         });
 }}
