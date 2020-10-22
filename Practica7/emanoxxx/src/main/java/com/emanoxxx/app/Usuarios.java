@@ -11,7 +11,7 @@ public class Usuarios {
         this.setContrasena(password);
     }
     public String toString(){
-        return "Usuario: "+email+"Password: "+ password;
+        return "Usuario: "+email+" Password: "+ password;
     }
     public Usuarios( String email, String password) {
         this.id="";
