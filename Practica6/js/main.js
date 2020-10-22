@@ -5,8 +5,19 @@ bLogeo.addEventListener('click',function(){
     const parametros = new URLSearchParams();
     parametros.append('email',eml);
     parametros.append('pass',psw);
-    axios.post('http://localhost:2021/adiosJson',parametros)
-    console.log(response);
+
+    axios.post("http://localhost:2021/usuarios",{
+        email: document.getElementById('eml').value, 
+        password: document.getElementById('psw').value})
+    .then(function(response){
+            console.log(response);
+            console.log("contenido: " + response.data);
+            console.log("status: " + response.status);
+            //document.getElementById("titulo").innerHTML = response.data;
+    }).catch(function(error){
+        console.log(error);
+    });
+             
             });
     
            /* axios.post('http://localhost:2020/adios'+'?'+parametros)
