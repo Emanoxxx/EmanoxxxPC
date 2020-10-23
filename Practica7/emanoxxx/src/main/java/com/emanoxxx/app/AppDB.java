@@ -39,8 +39,9 @@ public class AppDB
             Usuarios usuario=gson.fromJson(query,Usuarios.class);
             String id=usuario.getEmail()+"ID";
             usuario.setId(id);
-            DAO.addUsuario(usuario.getId(),usuario.getEmail(),usuario.getContrasena());
-            return "Se creo Usuario: "+id;
+            String x=DAO.addUsuario(usuario.getId(),usuario.getEmail(),usuario.getContrasena());;
+            System.out.println(x);
+            return x+": "+id;
         });
         
         

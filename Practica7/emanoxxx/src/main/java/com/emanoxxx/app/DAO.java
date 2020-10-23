@@ -10,7 +10,8 @@ import java.sql.*;
 
 public class DAO {
     public static Conexion conn = new Conexion();
-    public static void addUsuario(String id,String eml,String pass){
+    public static String addUsuario(String id,String eml,String pass){
+        String x="No creado";
         java.sql.Statement stm = null;
         Connection con=null;
         ResultSet rs =null;
@@ -20,7 +21,7 @@ public class DAO {
             String sql="INSERT INTO usuarios VALUES('"+id+"','"+eml+"','"+pass+"')";
             stm=con.createStatement();
             stm.execute(sql);
-            
+            x="Usuario Creado";
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -50,7 +51,7 @@ public class DAO {
                 System.out.println("Conexion cerrada");
             }
         }
-
+        return x;
     }
     public static List<Usuarios> getUsuarios(){
         java.sql.Statement stm = null;
