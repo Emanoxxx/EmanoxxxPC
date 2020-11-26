@@ -12,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {   
-        port(2021);
+        port(2020);
         options("/*", (request, response) -> {
             
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -47,7 +47,7 @@ public class App
            String eml= ""+peticion.get("email");
            return "Hola "+eml+" tu pass es: "+psw+"\n";
             }catch(Exception e){
-                return "error jeje";
+                return e.getMessage();
             }
            
             

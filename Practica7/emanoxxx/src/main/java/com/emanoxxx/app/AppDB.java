@@ -7,6 +7,9 @@ import java.util.UUID;
 import java.util.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 public class AppDB 
@@ -33,17 +36,36 @@ public class AppDB
         get("/usuarios",(req,res)->gson.toJson(DAO.getUsuarios()));
 
 
-        post("/usuarios",(req,res)->{
+        post("/Addusuarios",(req,res)->{
             String query = req.body();
             System.out.println("1Peticion: "+query);
             Usuarios usuario=gson.fromJson(query,Usuarios.class);
-            String id=usuario.getEmail()+"ID";
+            String id=usuario.getEmail()+"ID";/
             usuario.setId(id);
             String x=DAO.addUsuario(usuario.getId(),usuario.getEmail(),usuario.getContrasena());;
             System.out.println(x);
             return x+": "+id;
         });
-        
+        post("/Delusuarios",(req,res)->{
+            String query = req.body();
+            System.out.println("1Peticion: "+query);
+            Usuarios usuario=gson.fromJson(query,Usuarios.class);
+            String id=usuario.getEmail()+"ID";/
+            usuario.setId(id);
+            String x=DAO.addUsuario(usuario.getId(),usuario.getEmail(),usuario.getContrasena());;
+            System.out.println(x);
+            return x+": "+id;
+        });
+        post("/Updusuarios",(req,res)->{
+            String query = req.body();
+            System.out.println("1Peticion: "+query);
+            Usuarios usuario=gson.fromJson(query,Usuarios.class);
+            String id=usuario.getEmail()+"ID";/
+            usuario.setId(id);
+            String x=DAO.addUsuario(usuario.getId(),usuario.getEmail(),usuario.getContrasena());;
+            System.out.println(x);
+            return x+": "+id;
+        });
         
     }
 }
